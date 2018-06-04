@@ -34,7 +34,7 @@ x <- 1-smoothed$sp
 y <- smoothed$se
 t1ind <- which.min(abs(smoothed$sp-.8))
 
-p <- ggplot(NULL, aes(x=x, y=y)) +
+p1 <- ggplot(NULL, aes(x=x, y=y)) +
    geom_abline(slope=1, linetype="dashed", alpha=.5) + 
    geom_line(colour="darkorange2", size=.75) + 
    geom_polygon(aes(x=c(0,.2,.2,0), y=c(0,0,1,1)), alpha=.2) +
@@ -46,8 +46,27 @@ p <- ggplot(NULL, aes(x=x, y=y)) +
          axis.text=element_blank(),
          axis.ticks=element_blank()) 
 
+p2 <- ggplot(NULL, aes(x=1, y=1)) +
+  geom_label(aes(x=1, y=1, label="L"), size=15, 
+             label.size=.75, label.r=unit(0, "lines"), 
+             label.padding=unit(0.5, "lines")) + 
+  geom_text(aes(x=2, y=1, label="A"), size=15) + 
+  geom_text(aes(x=3, y=1, label="B"), size=15) + 
+  geom_segment(aes(x=1.08, xend=1.92, y=1, yend=1), size = .75,
+               arrow = arrow(length = unit(0.5, "cm")),
+               lineend="round") +
+  geom_curve(aes(x=1.08, xend=2.92, y=1, yend=1), size = .75,
+             arrow = arrow(length = unit(0.5, "cm")),
+             lineend="round", curvature=.5, ncp=100) +
+  theme_void() +
+  theme(panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        axis.title=element_blank(),
+        axis.text=element_blank(),
+        axis.ticks=element_blank()) 
+
 sysfonts::font_add_google("Fjalla One")
-sticker(p, package="GERKE", p_x=1, p_y=1.6, p_color="gray60",
+sticker(p1, package="GERKE", p_x=1, p_y=1.6, p_color="gray60",
         p_family="Fjalla One",
         s_x=1, s_y=1, s_width=1, s_height=1,
         h_fill="white", h_color="gray60")
