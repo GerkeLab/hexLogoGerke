@@ -42,6 +42,7 @@
 ##' sticker(p, package="hexSticker")
 ##' @author guangchuang yu
 sticker <- function(subplot, s_x=.8, s_y=.75, s_width=.4, s_height=.5,
+                    subplot2, s2_x=.8, s2_y=.75, s2_width=.4, s2_height=.5,
                     package, p_x=1, p_y=1.4, p_color="#FFFFFF", p_family="Aller_Rg", p_size=8,
                     h_size=1.2, h_fill="#1881C2", h_color="#87B13F",
                     spotlight=FALSE, l_x=1, l_y=.5, l_width=3, l_height=3, l_alpha=0.4,
@@ -53,7 +54,8 @@ sticker <- function(subplot, s_x=.8, s_y=.75, s_width=.4, s_height=.5,
     d <- data.frame(x=s_x, y=s_y, image=subplot)
     sticker <- hex + geom_image(aes_(x=~x, y=~y, image=~image), d, size=s_width)
   } else {
-    sticker <- hex + geom_subview(subview=subplot, x=s_x, y=s_y, width=s_width, height=s_height)
+    sticker <- hex + geom_subview(subview=subplot, x=s_x, y=s_y, width=s_width, height=s_height) +
+      geom_subview(subview=subplot2, x=s2_x, y=s2_y, width=s2_width, height=s2_height)
   }
   
   if(spotlight)

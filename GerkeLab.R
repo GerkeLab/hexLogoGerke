@@ -66,7 +66,8 @@ p2 <- ggplot(NULL, aes(x=1, y=1)) +
         axis.ticks=element_blank()) 
 
 sysfonts::font_add_google("Fjalla One")
-sticker(p1, package="GERKE", p_x=1, p_y=1.6, p_color="gray60",
+sticker(subplot=p1, s_x=1, s_y=1, s_width=1, s_height=1,
+        subplot2=p2, s2_x=1, s2_y=.5, s2_width=1.2, s2_height=.3, 
+        package="GERKE", p_x=1, p_y=1.6, p_color="gray60",
         p_family="Fjalla One",
-        s_x=1, s_y=1, s_width=1, s_height=1,
         h_fill="white", h_color="gray60")
