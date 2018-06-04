@@ -47,17 +47,21 @@ p1 <- ggplot(NULL, aes(x=x, y=y)) +
          axis.ticks=element_blank()) 
 
 p2 <- ggplot(NULL, aes(x=1, y=1)) +
-  geom_label(aes(x=1, y=1, label="L"), size=15, 
+  geom_label(aes(x=1, y=1, label="L"), size=4.5, color="gray60", fontface="bold",
              label.size=.75, label.r=unit(0, "lines"), 
-             label.padding=unit(0.5, "lines")) + 
-  geom_text(aes(x=2, y=1, label="A"), size=15) + 
-  geom_text(aes(x=3, y=1, label="B"), size=15) + 
-  geom_segment(aes(x=1.08, xend=1.92, y=1, yend=1), size = .75,
-               arrow = arrow(length = unit(0.5, "cm")),
-               lineend="round") +
-  geom_curve(aes(x=1.08, xend=2.92, y=1, yend=1), size = .75,
-             arrow = arrow(length = unit(0.5, "cm")),
-             lineend="round", curvature=.5, ncp=100) +
+             label.padding=unit(0.2, "lines")) + 
+  geom_text(aes(x=2, y=1, label="A"), size=4.5, color="gray60", fontface="bold") + 
+  geom_text(aes(x=3, y=1, label="B"), size=4.5, color="gray60", fontface="bold") + 
+  geom_text(aes(x=.5, y=1, label=" ")) + # add dummy space to left for sticker.R
+  geom_text(aes(x=3.5, y=1, label=" ")) + # add dummy space to right for sticker.R           
+  geom_text(aes(x=1, y=.75, label=" ")) + # add dummy space to bottom for sticker.R
+  geom_text(aes(x=1, y=1.25, label=" ")) + # add dummy space to top for sticker.R
+  geom_segment(aes(x=1.23, xend=1.77, y=1, yend=1), size = .75,
+               arrow = arrow(length = unit(0.2, "cm")),
+               lineend="round", color="gray60") +
+  geom_curve(aes(x=1.23, xend=2.77, y=1, yend=1), size = .75,
+             arrow = arrow(length = unit(0.2, "cm")),
+             lineend="round", color="gray60", curvature=.6, ncp=100) +
   theme_void() +
   theme(panel.grid.major=element_blank(),
         panel.grid.minor=element_blank(),
@@ -67,7 +71,7 @@ p2 <- ggplot(NULL, aes(x=1, y=1)) +
 
 sysfonts::font_add_google("Fjalla One")
 sticker(subplot=p1, s_x=1, s_y=1, s_width=1, s_height=1,
-        subplot2=p2, s2_x=1, s2_y=.5, s2_width=1.2, s2_height=.3, 
+        subplot2=p2, s2_x=1, s2_y=.45, s2_width=1.4, s2_height=.45, 
         package="GERKE", p_x=1, p_y=1.6, p_color="gray60",
         p_family="Fjalla One",
         h_fill="white", h_color="gray60")
